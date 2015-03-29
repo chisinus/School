@@ -1,0 +1,37 @@
+﻿@model School.Models.UserData
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Confirmation</title>
+    <link type="text/css" rel="stylesheet" href="~/Content/bootstrap-theme.css" />
+    <link type="text/css" rel="stylesheet" href="~/Content/bootstrap.css" />
+    <style>
+        body { background-color: #F1F1F1; }
+    </style>
+</head>
+<body>
+    <div class="text-center">
+        <h1>Thank yoiu, @Html.DisplayTextFor(x=>x.Name)</h1>
+        <div class="lead">
+            @if (Model.WillAttend == true)
+            {
+                @: It's great that you're coming. The drinks are already in the fridge!
+            }
+            else
+            {
+                @: Sorry to hear that you can't make it, but thanks for letting us know.
+            }
+        </div>
+        <div class="btn btn-success">
+            @Html.ActionLink("Go to Home Page", "Index");
+        </div>
+    </div>
+</body>
+</html>

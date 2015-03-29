@@ -1,0 +1,29 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link type="text/css" rel="stylesheet" href="~/Content/bootstrap-theme.css" />
+    <link type="text/css" rel="stylesheet" href="~/Content/bootstrap.css" />
+    <title>Index</title>
+    <style>
+        .btn a { color: Green; text-decoration: none}
+        body { background-color: #F1F1F1; }
+    </style>
+</head>
+<body>
+    <div class="text-center">
+        <h3>@ViewBag.Greeting</h3>
+        <H2>Welcome to my Chinese School</H2>
+
+        <div class="btn btn-success">
+            @Html.ActionLink("Subscribe", "SubscribeForm");
+        </div>
+    </div>
+</body>
+</html>
