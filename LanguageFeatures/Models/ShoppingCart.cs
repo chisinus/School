@@ -25,7 +25,25 @@ namespace LanguageFeatures.Models
     {
         public static decimal TotalPrices(this IEnumerable<Product> cartParam)
         {
-            return cartParam.TotalPrices.Products.Sum(p=>p.Price);
+            return cartParam.Sum(p=>p.Price);
+        }
+
+        public static IEnumerable<Product> FiterByPrice(this IEnumerable<Product> productEnum, decimal price)
+        {
+            foreach (Product prod in productEnum)
+            {
+                if (prod.Price > price)
+                    yield return prod;
+            }
+        }
+
+        public static IEnumerable<Product> FilterByFunction(this IEnumerable productEnum, Func<Product, bool> filterFunc)
+        {
+            foreach (Product prod in productEnum)
+            {
+                if (filterFunc(prod))
+                    yield return prod;
+            }
         }
     }
 }
