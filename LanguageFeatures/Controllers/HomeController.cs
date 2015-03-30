@@ -113,13 +113,6 @@ namespace LanguageFeatures.Controllers
             return View("Result", (object)String.Format("Products above 200: {0}", result.Count()));
         }
 
-        public ViewResult ViewWithLayout()
-        {
-            Product product = new Product { Name = "Soccer", Price = 100 };
-
-            return View("ViewWithLayout", product);
-        }
-
         public ActionResult NameAndPrice()
         {
             return View(myProduct);
