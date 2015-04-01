@@ -8,6 +8,17 @@ namespace LanguageFeatures.Models
 {
     public class ShoppingCart : IEnumerable<Product>
     {
+        private IValueCalculator calc;
+
+        public ShoppingCart()
+        {
+        }
+
+        public ShoppingCart(IValueCalculator calcParam)
+        {
+            calc = calcParam;
+        }
+
         public List<Product> Products { get; set; }
 
         public IEnumerator<Product> GetEnumerator()
@@ -18,6 +29,11 @@ namespace LanguageFeatures.Models
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+        public decimal CalculateProductTotal()
+        {
+            return calc.ValueProducts(Products);
         }
     }
 

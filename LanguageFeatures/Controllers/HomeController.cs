@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Ninject;
 
 namespace LanguageFeatures.Controllers
 {
@@ -17,9 +18,27 @@ namespace LanguageFeatures.Controllers
             Category = "Watersports",
             Price = 275M
         };
+
+        private List<Product> products = new List<Product>  { 
+                                                                new Product {Name = "Kayak", Category = "Watersports", Price = 100},
+                                                                new Product {Name = "Lifejacket", Category = "Watersports", Price = 200},
+                                                                new Product {Name = "Soccer ball", Category = "Soccer", Price = 300},
+                                                                new Product {Name = "Corner flag", Category = "Soccer", Price = 400}
+                                                            };
+
+
+        private IValueCalculator calc;
+
+        #region constructors
+        public HomeController(IValueCalculator calcParam)
+        {
+            calc = calcParam;
+        }
+        #endregion constructors
+
+        #region basic
         //
         // GET: /Home/
-
         public string Index()
         {
             return "Navigate to a URL to show an example";
@@ -51,18 +70,13 @@ namespace LanguageFeatures.Controllers
 
             return View("Result", (object)String.Format("Product Name: {0}", myProduct.Name));
         }
+        #endregion basic
 
+        #region Use Extension
         public ViewResult UseExtension()
         {
             // create and populate ShoppingCart
-            ShoppingCart cart = new ShoppingCart
-            {
-                Products = new List<Product> { new Product {Name = "Kayak", Price = 100},
-                                               new Product {Name = "Lifejacket", Price = 200},
-                                               new Product {Name = "Soccer ball", Price = 300},
-                                               new Product {Name = "Corner flag", Price = 400}
-                                             }
-            };
+            ShoppingCart cart = new ShoppingCart { Products = products };
 
             // get the total value of the products in the cart
             decimal cartTotal = cart.TotalPrices();
@@ -112,7 +126,9 @@ namespace LanguageFeatures.Controllers
 
             return View("Result", (object)String.Format("Products above 200: {0}", result.Count()));
         }
+        #endregion Use Extension
 
+        #region model
         public ActionResult NameAndPrice()
         {
             return View(myProduct);
@@ -138,5 +154,32 @@ namespace LanguageFeatures.Controllers
                               };
             return View(array);
         }
+        #endregion model
+
+        #region DI Container
+        public ActionResult DemoLinqValueCalculator()
+        {
+            calc = new LinqValueCalculator();
+            ShoppingCart cart = new ShoppingCart(calc) { Products = products };
+
+            return View(cart.CalculateProductTotal());
+        }
+
+        public ActionResult DemoLinqValueCalculatorNinject()
+        {
+            ShoppingCart cart = new ShoppingCart(calc) { Products = products };
+
+            decimal totalValue = cart.CalculateProductTotal();
+
+            return View(totalValue);
+            //IKernel ninjectKernel = new StandardKernel();
+            //ninjectKernel.Bind<IValueCalculator>().To<LinqValueCalculator>();
+
+            //IValueCalculator calc = ninjectKernel.Get<IValueCalculator>();
+            //ShoppingCart cart = new ShoppingCart(calc) { Products = products };
+
+            //return View("DemoLinqValueCalculator", cart.CalculateProductTotal());
+        }
+        #endregion DI Container
     }
 }
