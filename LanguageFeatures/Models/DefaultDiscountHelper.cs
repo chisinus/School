@@ -9,6 +9,11 @@ namespace LanguageFeatures.Models
     {
         public decimal DiscountSize { get; set; }
 
+        //public DefaultDiscountHelper(decimal discountParam) 
+        //{
+        //    DiscountSize = discountParam;
+        //}
+
         public decimal ApplyDiscount(decimal totalParam)
         {
             return (totalParam - (DiscountSize / 100m * totalParam));

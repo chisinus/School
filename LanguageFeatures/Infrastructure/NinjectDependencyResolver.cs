@@ -38,6 +38,7 @@ namespace LanguageFeatures.Infrastructure
         private void AddBindings()
         {
             kernel.Bind<IValueCalculator>().To<LinqValueCalculator>();
+            //kernel.Bind<IDiscountHelper>().To<DefaultDiscountHelper>().WithPropertyValue("discountParam", 50M);
             kernel.Bind<IDiscountHelper>().To<DefaultDiscountHelper>().WithPropertyValue("DiscountSize", 50M);
         }
     }
