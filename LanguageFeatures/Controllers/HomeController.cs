@@ -176,10 +176,6 @@ namespace LanguageFeatures.Controllers
 
         public ActionResult DemoLinqValueCalculatorNinjectDependencyResolver()
         {
-            IKernel ninjectKernel = new StandardKernel();
-            ninjectKernel.Bind<IValueCalculator>().To<LinqValueCalculator>();
-
-            IValueCalculator calc = ninjectKernel.Get<IValueCalculator>();
             ShoppingCart cart = new ShoppingCart(calc) { Products = products };
 
             return View("DemoLinqValueCalculator", cart.CalculateProductTotal());
