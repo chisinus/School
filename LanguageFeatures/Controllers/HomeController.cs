@@ -30,7 +30,12 @@ namespace LanguageFeatures.Controllers
         private IValueCalculator calc;
 
         #region constructors
-        public HomeController(IValueCalculator calcParam)
+        //public HomeController(IValueCalculator calcParam)
+        //{
+        //    calc = calcParam;
+        //}
+
+        public HomeController(IValueCalculator calcParam, IValueCalculator calc2)   // Demostrates scope
         {
             calc = calcParam;
         }

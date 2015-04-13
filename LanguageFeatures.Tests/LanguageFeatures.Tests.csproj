@@ -114,6 +114,7 @@
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UT_MinumumDiscountHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config">

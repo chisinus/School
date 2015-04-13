@@ -37,9 +37,10 @@ namespace LanguageFeatures.Infrastructure
         //Loose coupling
         private void AddBindings()
         {
-            kernel.Bind<IValueCalculator>().To<LinqValueCalculator>();
-            //kernel.Bind<IDiscountHelper>().To<DefaultDiscountHelper>().WithPropertyValue("discountParam", 50M);
-            kernel.Bind<IDiscountHelper>().To<DefaultDiscountHelper>().WithPropertyValue("DiscountSize", 50M);
+            kernel.Bind<IValueCalculator>().To<LinqValueCalculator>().InSingletonScope();//.InRequestScope();
+            //kernel.Bind<IDiscountHelper>().To<DefaultDiscountHelper>().WithPropertyValue("discountParam", 50M);       // Using parameter
+            kernel.Bind<IDiscountHelper>().To<DefaultDiscountHelper>().WithPropertyValue("DiscountSize", 50M);          // using Property
+            kernel.Bind<IDiscountHelper>().To<FlexibleDiscountHelper>().WhenInjectedInto<LinqValueCalculator>();        //Conditional Binding
         }
     }
 }
