@@ -23,8 +23,9 @@ namespace LanguageFeatures.Models
 
         public decimal ValueProducts(IEnumerable<Product> products)
         {
-            //return products.Sum(p => p.Price);
-            return discounter.ApplyDiscount(products.Sum(p => p.Price));
+            return (discounter == null)
+                    ? products.Sum(p => p.Price)
+                    : discounter.ApplyDiscount(products.Sum(p => p.Price));
 
         }
     }

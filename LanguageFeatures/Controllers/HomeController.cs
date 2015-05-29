@@ -94,11 +94,7 @@ namespace LanguageFeatures.Controllers
             // create and populate ShoppingCart
             ShoppingCart cart = new ShoppingCart
             {
-                Products = new List<Product> { new Product {Name = "Kayak", Price = 100},
-                                               new Product {Name = "Lifejacket", Price = 200},
-                                               new Product {Name = "Soccer ball", Price = 300},
-                                               new Product {Name = "Corner flag", Price = 400}
-                                             }
+                Products = products
             };
 
             // get the total value of the products in the cart
@@ -176,7 +172,7 @@ namespace LanguageFeatures.Controllers
 
             decimal totalValue = cart.CalculateProductTotal();
 
-            return View(totalValue);
+            return View("DemoLinqValueCalculator", totalValue);
         }
 
         public ActionResult DemoLinqValueCalculatorNinjectDependencyResolver()
