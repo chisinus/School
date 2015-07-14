@@ -1,5 +1,6 @@
 ﻿@using SportsStore.Domain.Entities
-@model IEnumerable<Product>
+@* @model IEnumerable<Product> *@
+@model SportsStore.WebUI.Models.ProductsListViewModel
 
 @{
     ViewBag.Title = "List";
@@ -7,7 +8,7 @@
 
 <h2>List</h2>
 
-@foreach (var p in Model)
+@foreach (var p in Model.Products)
 {
     <div>
         <h3>@p.Name</h3>
