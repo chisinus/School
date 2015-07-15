@@ -27,8 +27,8 @@ namespace SportsStore.WebUI.Controllers
 
         public ViewResult List(int page = 1)
         {
-            return View(List_WithPageControl(page));
             //return View(List_WithPage(page));
+            return View(List_WithPageControl(page));
         }
 
         // With Page
@@ -46,9 +46,9 @@ namespace SportsStore.WebUI.Controllers
             ProductsListViewModel model = new ProductsListViewModel
             {
                 Products = repository.Products
-                                        .OrderBy(p => p.Description)
-                                        .Skip((page - 1) * PageSize)
-                                        .Take(PageSize),
+                                    .OrderBy(p => p.Description)
+                                    .Skip((page - 1) * PageSize)
+                                    .Take(PageSize),
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = page,
