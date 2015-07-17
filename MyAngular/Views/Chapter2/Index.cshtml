@@ -42,14 +42,21 @@
         return function(items, showComplete)
         {
             var resultArr = [];
-            angular.foreach(items, function (item) {
-                if (item.done == showComplete)
+            angular.forEach(items, function (item) {
+                if (item.done == false || showComplete == true)
                     resultArr.push(item);
             });
 
             return resultArr;
         }
     });
+
+    //make a json call
+    //todoApp.run(function ($http) {
+    //    $http.get("file name").success(function (data) {
+    //        model.items = data;
+    //    });
+    //});
 </script>
 
 <div class="page-header">
@@ -73,7 +80,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="item in todo.items | filter:showComplete | orderBy: 'action'">
+            <tr ng-repeat="item in todo.items | checkedItems:showComplete | orderBy: 'action'">
                 <td>{{item.action}}</td>
                 <td><input type="checkbox" ng-model="item.done" /></td>
             </tr>
@@ -81,6 +88,6 @@
     </table>
 
     <div class="=checkbox-inline">
-        <label><input type="checkbox" ng-model="shwoComplete" />Show Complete </label>
+        <label><input type="checkbox" ng-model="showComplete" />Show Complete </label>
     </div>
 </div>
