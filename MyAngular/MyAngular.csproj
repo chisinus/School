@@ -85,6 +85,7 @@
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-locale_zh-hans.js" />
     <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular-sanitize.js" />
     <Content Include="Scripts\angular-touch.js" />
@@ -94,12 +95,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\MyAngularJS.js" />
+    <Content Include="Scripts\SportsStore.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Chapter2Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SportsStoreController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -116,6 +119,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Views\Chapter2\Index.cshtml" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
+    <Content Include="Views\SportsStore\Home.cshtml" />
+    <Content Include="Views\Shared\_LayoutSportsStore.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -125,7 +130,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Components\" />
+    <Folder Include="Filters\" />
     <Folder Include="Models\" />
+    <Folder Include="NGModules\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

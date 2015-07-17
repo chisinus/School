@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_LayoutSportsStore.cshtml";
+}
+
+<div class="navbar navbar-inverse">
+    <a class="navbar-brand" href="#">SPORTS STORE</a>
+</div>
+
+<div class="panel panel-default row">
+    <div class="col-xs-3">
+        <a ng-click="selectCategory" class="=btn btn-default btn-lg">Home</a>
+        <a ng-repeat="product in data.products | orderBy : 'category' | unique : 'category'"
+           ng-click="selectCategory(product)" class="btn btn-block btn-default btn-lg">
+            {{product}}
+        </a>
+    </div>
+    <div class="col-xs-8">
+        <div class="well" ng-repeat="product in data.products">
+            <h3>
+                <strong>{{product.name}}</strong>
+                <span class="pull-right label label-primary">
+                    {{product.price | currency}}
+                </span>
+            </h3>
+            <span class="lead">{{product.description}}</span>
+        </div>
+    </div>
+</div>
