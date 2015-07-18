@@ -1,25 +1,4 @@
-﻿var customFilters = angular.module("customFilters", []);
-customFilters.filter("unique", function () {
-    return function (data, propertyName) {
-        if (!angular.isArray(data) || !angular.isString(propertyName))
-            return data;
-
-        var results = [];
-        var keys = [];
-
-        for (var i = 0; i < data.length; i++) {
-            var val = data[i][propertyName];
-            if (angular.isUndefined(keys[val])) {
-                keys[val] = true;
-                results.push(val);
-            }
-        }
-
-        return results;
-    }
-});
-
-var sportsStore = angular.module("sportsStore", ["customFilters"]);
+﻿var sportsStore = angular.module("sportsStore", ["customFilters"]);
 
 sportsStore.controller("sportsStoreCtrl", function ($scope) {
     $scope.data = {
@@ -42,5 +21,3 @@ sportsStore.controller("sportsStoreCtrl", function ($scope) {
                     }]
     }
 });
-
-

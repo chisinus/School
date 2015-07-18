@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Filters\customFilters.js" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-locale_zh-hans.js" />
     <Content Include="Scripts\angular-mocks.js" />
@@ -95,6 +96,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\MyAngularJS.js" />
+    <Content Include="Scripts\productListControllers.js" />
     <Content Include="Scripts\SportsStore.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -131,7 +133,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Components\" />
-    <Folder Include="Filters\" />
     <Folder Include="Models\" />
     <Folder Include="NGModules\" />
   </ItemGroup>
