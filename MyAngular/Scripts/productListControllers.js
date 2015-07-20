@@ -13,7 +13,7 @@ sportsStore.controller("productListCtrl", function ($scope, $filter, productList
 
     $scope.categoryFilter = function (product) {
         return selectedCategory == null ||
-               product.category == selectedCategory;
+               product.Category == selectedCategory;
     }
 
     $scope.getCategoryClass = function(category)

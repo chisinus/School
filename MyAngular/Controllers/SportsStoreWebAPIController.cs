@@ -1,17 +1,11 @@
 ﻿using MyAngular.Models;
 using System.Collections.Generic;
-using System.Web.Mvc;
+using System.Web.Http;
 
 namespace MyAngular.Controllers
 {
-    public class SportsStoreController : Controller
+    public class SportsStoreWebAPIController : ApiController
     {
-        // GET: SportsStore
-        public ActionResult Home()
-        {
-            return View();
-        }
-
         private List<ProductData> products = new List<ProductData>()
         {
             new ProductData {Name="Product #1", Description ="A Product 1", Category="Category #1", Price=100 },
@@ -20,15 +14,11 @@ namespace MyAngular.Controllers
             new ProductData {Name="Product #4", Description ="A Product 4", Category="Category #3", Price=202 }
         };
 
-        //[HttpGet]
-        //public List<ProductData> GetProducts()
-        //{
-        //    return products;
-        //}
-        public int[] GetProducts()
+        // GET: SportsStoreWebAPI
+        [HttpGet]
+        public List<ProductData> GetProducts()
         {
-            return new int[] { 1, 2, 3 };
+            return products;
         }
-
     }
 }
