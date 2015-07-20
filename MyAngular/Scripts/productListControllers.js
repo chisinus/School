@@ -1,7 +1,7 @@
 ﻿sportsStore.constant("productListActiveClass", "btn-primary")
            .constant("productListPageCount", 3);
 
-sportsStore.controller("productListCtrl", function ($scope, $filter, productListActiveClass, productListPageCount) {
+sportsStore.controller("productListCtrl", function ($scope, $filter, productListActiveClass, productListPageCount, cart) {
     var selectedCategory = null;
     $scope.selectedPage = 1;
     $scope.pageSize = productListPageCount;
@@ -29,5 +29,10 @@ sportsStore.controller("productListCtrl", function ($scope, $filter, productList
     $scope.getPageClass = function(page)
     {
         return $scope.selectedPage == page ? productListActiveClass : "";
+    }
+
+    $scope.addProductToCart = function(product)
+    {
+        cart.addProduct(product.ID, product.Name, product.Price);
     }
 });

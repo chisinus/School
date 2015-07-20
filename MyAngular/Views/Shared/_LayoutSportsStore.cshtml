@@ -4,7 +4,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SportsStore</title>
     <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
     <script src="~/Filters/customFilters.js"></script>
+    <script src="~/Scripts/Cart.js"></script>
     <script src="~/Scripts/SportsStore.js"></script>
     <script src="~/Scripts/productListControllers.js"></script>
     <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
@@ -13,8 +15,21 @@
     </script>
 </head>
 <body ng-controller="sportsStoreCtrl">
-    <div class="container body-content">
-        @RenderBody()
+    <div class="navbar navbar-inverse">
+        <a class="navbar-brand" href="#">SPORTS STORE</a>
+        <cart-summary />
     </div>
+    <div class="alert alert-danger" ng-show="data.error">
+        Error ({{data.error.status}}). The product data was not loaded.
+        <a href="/app.html" class="alert-link">Click here to try again</a>
+    </div>
+    @{
+        /* without router
+        <div class="container body-content">
+            @RenderBody()
+        </div> */
+    }
+
+    <ng-view />
 </body>
 </html>

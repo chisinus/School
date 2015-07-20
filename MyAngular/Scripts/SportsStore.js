@@ -1,4 +1,10 @@
-﻿var sportsStore = angular.module("sportsStore", ["customFilters"]);
+﻿var sportsStore = angular.module("sportsStore", ["customFilters", "cart"]);
+
+sportsStore.config(function ($routerProvider) {
+    $routerProvider.when("/checkout", { templateUrl: "/Views/SportsStore/CheckoutSummary.html" });
+    $routerProvider.when("/products", { templateUrl: "/Views/SportsStore/ProductList.html" });
+    $routerProvider.otherwise({ templateUrl: "/Views/SportsStore/ProductList.html" });
+});
 
 /* Hard coded
 sportsStore.controller("sportsStoreCtrl", function ($scope) {
@@ -26,19 +32,23 @@ sportsStore.controller("sportsStoreCtrl", function ($scope) {
 
 /* Web api*/
 sportsStore.controller("sportsStoreCtrl", function ($scope, $http) {
-    $http.get("http://localhost:20003/api/SportsStoreWebAPI/GetProducts")
+    $scope.data = {};
+
+    $http.get("http://localhost:20003/api/SportsStoreWebAPI/aaa")
          .success(function(data, status, headers, config)
          {
-             $scope.products = data;
+             console.log(data.length);
+             $scope.data.products = data;
+             $scope.data.error = false;
          })
          .error(function(data, status, headers, config)
          {
-             alert("error");
+             $scope.data.error = true;
          });
 });
 
 
-// does not work. how to call a controller method?
+// does not work. how to call a controller method for web form?
 //sportsStore.constant("dataUrl", "/SportsStore/GetProducts")
 //    .controller("sportsStoreCtrl", function ($scope, $http, dataUrl) {
 //        $http.get(dataUrl)
