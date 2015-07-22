@@ -1,10 +1,12 @@
-﻿var sportsStore = angular.module("sportsStore", ["customFilters", "cart"]);
+﻿var sportsStore = angular.module("sportsStore", ["ngRoute", "customFilters", "cart"]);
 
-sportsStore.config(function ($routerProvider) {
+sportsStore.config(['$routeProvider', function ($routerProvider) {
     $routerProvider.when("/checkout", { templateUrl: "/Views/SportsStore/CheckoutSummary.html" });
     $routerProvider.when("/products", { templateUrl: "/Views/SportsStore/ProductList.html" });
+    $routerProvider.when("/placeoorder", { templateUrl: "/Views/SportsStore/PlaceOrder.html" });
+    $routerProvider.when("/complete", { templateUrl: "/Views/SportsStore/ThankYou.html" });
     $routerProvider.otherwise({ templateUrl: "/Views/SportsStore/ProductList.html" });
-});
+}]);
 
 /* Hard coded
 sportsStore.controller("sportsStoreCtrl", function ($scope) {

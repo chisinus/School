@@ -9,6 +9,7 @@
     <script src="~/Scripts/Cart.js"></script>
     <script src="~/Scripts/SportsStore.js"></script>
     <script src="~/Scripts/productListControllers.js"></script>
+    <script src="~/Scripts/checkoutControllers.js"></script>
     <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap-theme.css" rel="stylesheet" type="text/css" />
     <script>
@@ -23,12 +24,10 @@
         Error ({{data.error.status}}). The product data was not loaded.
         <a href="/app.html" class="alert-link">Click here to try again</a>
     </div>
-    @{
-        /* without router
-        <div class="container body-content">
-            @RenderBody()
-        </div> */
-    }
+
+    <div class="container body-content">
+        @RenderBody()
+    </div> 
 
     <ng-view />
 </body>

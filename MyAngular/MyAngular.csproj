@@ -113,6 +113,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Cart.js" />
+    <Content Include="Scripts\checkoutControllers.js" />
     <Content Include="Scripts\MyAngularJS.js" />
     <Content Include="Scripts\productListControllers.js" />
     <Content Include="Scripts\SportsStore.js" />

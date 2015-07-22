@@ -3,14 +3,3 @@
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_LayoutSportsStore.cshtml";
 }
-
-<div class="navbar navbar-inverse">
-    <a class="navbar-brand" href="#">SPORTS STORE</a>
-    <cart-summary />
-</div>
-<div class="alert alert-danger" ng-show="data.error">
-    Error ({{data.error.status}}). The product data was not loaded.
-    <a href="/app.html" class="alert-link">Click here to try again</a>
-</div>
-
-<ng-include src="'/Views/SportsStore/ProductList.html'"></ng-include>
