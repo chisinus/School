@@ -6,6 +6,7 @@ namespace MyAngular.Controllers
 {
     public class SportsStoreWebAPIController : ApiController
     {
+        private OrderData order;
         private List<ProductData> products = new List<ProductData>()
         {
             new ProductData {ID = 1, Name="Product #1", Description ="A Product 1", Category="Category #1", Price=100 },
@@ -20,6 +21,10 @@ namespace MyAngular.Controllers
             return products;
         }
 
-
+        [HttpPost]
+        public void NewOrder()
+        {
+            
+        }
     }
 }

@@ -118,6 +118,7 @@
     <Content Include="Scripts\productListControllers.js" />
     <Content Include="Scripts\SportsStore.js" />
     <Content Include="Views\SportsStore\CheckoutSummary.html" />
+    <Content Include="Views\SportsStore\PlaceOrder.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +131,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderData.cs" />
     <Compile Include="Models\ProductData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

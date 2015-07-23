@@ -3,7 +3,7 @@
 sportsStore.config(['$routeProvider', function ($routerProvider) {
     $routerProvider.when("/checkout", { templateUrl: "/Views/SportsStore/CheckoutSummary.html" });
     $routerProvider.when("/products", { templateUrl: "/Views/SportsStore/ProductList.html" });
-    $routerProvider.when("/placeoorder", { templateUrl: "/Views/SportsStore/PlaceOrder.html" });
+    $routerProvider.when("/placeorder", { templateUrl: "/Views/SportsStore/PlaceOrder.html" });
     $routerProvider.when("/complete", { templateUrl: "/Views/SportsStore/ThankYou.html" });
     $routerProvider.otherwise({ templateUrl: "/Views/SportsStore/ProductList.html" });
 }]);
@@ -32,8 +32,12 @@ sportsStore.controller("sportsStoreCtrl", function ($scope) {
 });
 */
 
+sportsStore
+    .constant("dataUrl", "/SportsStore/GetProducts")
+    .constant("orderUrl", "/SportsStore/NewOrder");
+
 /* Web api*/
-sportsStore.controller("sportsStoreCtrl", function ($scope, $http) {
+sportsStore.controller("sportsStoreCtrl", function ($scope, $http, $location, dataUrl, orderUrl, cart) {
     $scope.data = {};
 
     $http.get("http://localhost:20003/api/SportsStoreWebAPI/aaa")
@@ -47,6 +51,24 @@ sportsStore.controller("sportsStoreCtrl", function ($scope, $http) {
          {
              $scope.data.error = true;
          });
+
+    $scope.sendOrder = function(shippingData)
+    {
+        var order = angular.copy(shippingDetails);
+        order.products = cart.getProducts();
+
+        $http.post(orderUrl, order)
+            .success(function (data) {
+                $scope.data.orderId = data.id;
+                cart.getProducts().length = 0;
+            })
+            .error(function (error) {
+                $scope.data.orderError = error;
+            })
+            .finally(function () {
+                $location.path("/complete");
+            });
+    }
 });
 
 
