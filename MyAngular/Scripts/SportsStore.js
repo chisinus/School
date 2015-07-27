@@ -55,7 +55,7 @@ sportsStore.controller("sportsStoreCtrl", function ($scope, $http, $location, da
     $scope.sendOrder = function(shippingData)
     {
         var order = angular.copy(shippingDetails);
-        order.products = cart.getProducts();
+        order.Products = cart.getProducts();
 
         $http.post(orderUrl, order)
             .success(function (data) {
