@@ -8,6 +8,11 @@ namespace MyAngular.Models
 {
     public class SportsStoreContext : DbContext
     {
+        public SportsStoreContext()
+            : base("SportsStoreContext")
+        {
+        }
+
         public DbSet<ProductData> Products { get; set; }
     }
 }
