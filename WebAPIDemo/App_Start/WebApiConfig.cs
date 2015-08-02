@@ -31,8 +31,8 @@ namespace WebAPIDemo
             json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
             config.Formatters.Remove(config.Formatters.XmlFormatter);
 
-            var jsonStyleFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
-            jsonStyleFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            //var jsonStyleFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
+            //jsonStyleFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
         }
     }
 }
