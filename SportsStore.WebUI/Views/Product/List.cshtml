@@ -1,5 +1,24 @@
-﻿@* @using SportsStore.Domain.Entities *@
-@* @model IEnumerable<Product> *@
+﻿@* Used by List_WithPage
+@using SportsStore.Domain.Entities
+@model IEnumerable<Product>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+@foreach (var p in Model)
+{
+    <div>
+        <h3>@p.Name</h3>
+        @p.Description
+        <h4>@p.Price.ToString("c")</h4>
+    </div>
+}
+*@
+
+@* Used by List_WithPageControl*@
 @model SportsStore.WebUI.Models.ProductsListViewModel
 
 @{
@@ -16,3 +35,7 @@
         <h4>@p.Price.ToString("c")</h4>
     </div>
 }
+
+<div>
+    @Html.PageLinks(Model.PagingInfo, x=>Url.Action("List", new { page = x }))
+</div>

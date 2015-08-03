@@ -35,9 +35,9 @@ namespace SportsStore.WebUI.Controllers
         public IEnumerable<Product> List_WithPage(int page = 1)
         {
             return repository.Products
-                                .OrderBy(p => p.Description)
-                                .Skip((page - 1) * PageSize)
-                                .Take(PageSize);
+                             .OrderBy(p => p.Description)
+                             .Skip((page - 1) * PageSize)
+                             .Take(PageSize);
         }
 
         // With page control
