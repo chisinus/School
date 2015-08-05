@@ -25,27 +25,54 @@ namespace SportsStore.WebUI.Controllers
         //    return View(repository.Products);
         //}
 
-        public ViewResult List(int page = 1)
+        // always return all
+        //public ViewResult List(int page = 1)
+        //{
+        //    //return View(List_WithPage(page));
+        //    return View(List_WithPageControl(page));
+        //}
+        // With Page
+        //public IEnumerable<Product> List_WithPage(int page = 1)
+        //{
+        //    return repository.Products
+        //                     .OrderBy(p => p.Description)
+        //                     .Skip((page - 1) * PageSize)
+        //                     .Take(PageSize);
+        //}
+
+        //// With page control
+        //public ProductsListViewModel List_WithPageControl(int page = 1)
+        //{
+        //    ProductsListViewModel model = new ProductsListViewModel
+        //    {
+        //        Products = repository.Products
+        //                            .OrderBy(p => p.Description)
+        //                            .Skip((page - 1) * PageSize)
+        //                            .Take(PageSize),
+        //        PagingInfo = new PagingInfo
+        //        {
+        //            CurrentPage = page,
+        //            ItemsPerPage = PageSize,
+        //            TotalItems = repository.Products.Count()
+        //        }
+        //    };
+
+        //    return model;
+        //}
+
+        public ViewResult List(string category, int page = 1)
         {
-            //return View(List_WithPage(page));
-            return View(List_WithPageControl(page));
+            return View(List_WithPageControl(category, page));
         }
 
-        // With Page
-        public IEnumerable<Product> List_WithPage(int page = 1)
-        {
-            return repository.Products
-                             .OrderBy(p => p.Description)
-                             .Skip((page - 1) * PageSize)
-                             .Take(PageSize);
-        }
 
         // With page control
-        public ProductsListViewModel List_WithPageControl(int page = 1)
+        public ProductsListViewModel List_WithPageControl(string category, int page = 1)
         {
             ProductsListViewModel model = new ProductsListViewModel
             {
                 Products = repository.Products
+                                    .Where(p => category == null || p.Category == category)
                                     .OrderBy(p => p.Description)
                                     .Skip((page - 1) * PageSize)
                                     .Take(PageSize),
@@ -54,7 +81,8 @@ namespace SportsStore.WebUI.Controllers
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
                     TotalItems = repository.Products.Count()
-                }
+                },
+                CurrentCategory = category
             };
 
             return model;
