@@ -72,12 +72,16 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="UT_Cart.cs" />
+    <Compile Include="UT_Menu.cs" />
     <Compile Include="UT_PagingHelpers.cs" />
     <Compile Include="UT_Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
