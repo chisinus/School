@@ -6,36 +6,33 @@ using SportsStore.Domain.Abstract;
 using Moq;
 using SportsStore.WebUI.Controllers;
 using System.Web.Mvc;
+using SportsStore.WebUI.Models;
 
 namespace SportsStore.UnitTests
 {
     [TestClass]
     public class UT_Cart
     {
-        [TestClass]
-        public class CartTests
+        #region Cart Lines
+        [TestMethod]
+        public void Can_Add_New_Lines()
         {
-            #region Cart Lines
-            [TestMethod]
-            public void Can_Add_New_Lines()
-            {
-                // Arrange - create some test products
-                Product p1 = new Product { ProductID = 1, Name = "P1" };
-                Product p2 = new Product { ProductID = 2, Name = "P2" };
+            // Arrange - create some test products
+            Product p1 = new Product { ProductID = 1, Name = "P1" };
+            Product p2 = new Product { ProductID = 2, Name = "P2" };
 
-                // Arrange - create a new cart
-                Cart target = new Cart();
+            // Arrange - create a new cart
+            Cart target = new Cart();
 
-                // Act
-                target.AddItem(p1, 1);
-                target.AddItem(p2, 1);
-                CartLine[] results = target.Lines.ToArray();
+            // Act
+            target.AddItem(p1, 1);
+            target.AddItem(p2, 1);
+            CartLine[] results = target.Lines.ToArray();
 
-                // Assert
-                Assert.AreEqual(results.Length, 2);
-                Assert.AreEqual(results[0].Product, p1);
-                Assert.AreEqual(results[1].Product, p2);
-            }
+            // Assert
+            Assert.AreEqual(results.Length, 2);
+            Assert.AreEqual(results[0].Product, p1);
+            Assert.AreEqual(results[1].Product, p2);
         }
 
         [TestMethod]
@@ -169,16 +166,19 @@ namespace SportsStore.UnitTests
             Assert.AreEqual(result.RouteValues["action"], "Index");
             Assert.AreEqual(result.RouteValues["returnUrl"], "myUrl");
         }
+
         [TestMethod]
         public void Can_View_Cart_Contents()
         {
             // Arrange - create a Cart
             Cart cart = new Cart();
+
             // Arrange - create the controller
             CartController target = new CartController(null);
+
             // Act - call the Index action method
-            CartIndexViewModel result
-            = (CartIndexViewModel)target.Index(cart, "myUrl").ViewData.Model;
+            CartIndexViewModel result = (CartIndexViewModel)target.Index(cart, "myUrl").ViewData.Model;
+            
             // Assert
             Assert.AreSame(result.Cart, cart);
             Assert.AreEqual(result.ReturnUrl, "myUrl");

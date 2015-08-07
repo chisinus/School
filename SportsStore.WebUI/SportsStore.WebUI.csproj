@@ -233,6 +233,8 @@
     <Content Include="Views\Shared\ProductSummary.cshtml" />
     <Content Include="Views\Nav\Menu.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\Summary.cshtml" />
+    <Content Include="Views\Cart\Checkout.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -80,5 +80,17 @@ namespace SportsStore.WebUI.Controllers
             return RedirectToAction("Index", new { returnUrl });
         }
         #endregion use model binder
+
+        #region Cart Summary
+        public PartialViewResult Summary(Cart cart)
+        {
+            return PartialView(cart);
+        }
+
+        public ViewResult Checkout()
+        {
+            return View(new ShippingDetails());
+        }
+        #endregion Cart Summary
     }
 }
