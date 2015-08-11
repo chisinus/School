@@ -5,6 +5,7 @@ using SportsStore.Domain.Entities;
 using SportsStore.WebUI.Controllers;
 using System.Linq;
 using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace SportsStore.UnitTests
 {
@@ -40,7 +41,7 @@ namespace SportsStore.UnitTests
         {
             // Arrange
             Mock<IProductRepository> mock = new Mock<IProductRepository>();
-            mock.Setup(m=>m.Products).Returns(new Product[]
+            mock.Setup(m => m.Products).Returns(new Product[]
                 {
                     new Product { ProductID = 1, Name = "P1" },
                     new Product { ProductID = 2, Name = "P2" },
@@ -76,6 +77,67 @@ namespace SportsStore.UnitTests
             Product result = (Product)target.Edit(4).ViewData.Model;
             // Assert
             Assert.IsNull(result);
+        }
+
+        [TestMethod]
+        public void Can_Save_Valid_Changes()
+        {
+            // Arrange
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            AdminController controller = new AdminController(mock.Object);
+
+            Product product = new Product { Name = "Test" };
+
+            // Act
+            ActionResult result = controller.Edit(product);
+
+            // Assert - check that the repository was called
+            mock.Verify(m => m.SaveProduct(product));
+
+            // Assert - check the method result type
+            Assert.IsNotInstanceOfType(result, typeof(ViewResult));
+        }
+
+        [TestMethod]
+        public void Cannot_Save_Invalid_Changes()
+        {
+            // Arrange
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            AdminController controller = new AdminController(mock.Object);
+            controller.ModelState.AddModelError("error", "error");
+
+            Product product = new Product { Name = "Test" };
+
+            // Act - try to save the product
+            ActionResult result = controller.Edit(product);
+
+            // Assert - check that the repository was not called
+            mock.Verify(m => m.SaveProduct(It.IsAny<Product>()), Times.Never());
+            // Assert - check the method result type
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
+        }
+
+        [TestMethod]
+        public void Can_Delete_Valid_Products()
+        {
+            // Arrange
+            Product prod = new Product { ProductID = 2, Name = "Test" };
+
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            mock.Setup(m => m.Products).Returns(new Product[]
+            {
+                new Product { ProductID = 1, Name = "P1" },
+                prod,
+                new Product { ProductID = 3, Name = "P3" }
+            });
+
+            AdminController controller = new AdminController(mock.Object);
+
+            // Action
+            controller.Delete(prod.ProductID);
+
+            // Assert
+            mock.Verify(m => m.DeleteProduct(prod.ProductID));
         }
     }
 }
