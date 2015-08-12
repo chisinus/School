@@ -204,7 +204,9 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="App_Data\SportsStore.bak" />
+    <Content Include="App_Data\xjsportsstore.azurewebsites.net.PublishSettings" />
+    <None Include="Properties\PublishProfiles\xjsportsstore - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\xjsportsstore - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
