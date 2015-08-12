@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace SportsStore.WebUI.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class AdminController : Controller
     {
         private IProductRepository repository;
@@ -31,19 +31,21 @@ namespace SportsStore.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Product product)
+        public ActionResult Edit(Product product, HttpPostedFileBase image=null)
         {
-            if (ModelState.IsValid)
-            {
-                repository.SaveProduct(product);
-                TempData["message"] = string.Format("{0} has been saved", product.Name);
+            if (!ModelState.IsValid) return View(product);
 
-                return RedirectToAction("Index");
-            }
-            else
+            if (image != null)
             {
-                return View(product);
+                product.ImageMimeType = image.ContentType;
+                product.ImageData = new byte[image.ContentLength];
+                image.InputStream.Read(product.ImageData, 0, image.ContentLength);
             }
+
+            repository.SaveProduct(product);
+            TempData["message"] = string.Format("{0} has been saved", product.Name);
+
+            return RedirectToAction("Index");
         }
 
         public ViewResult Create()
