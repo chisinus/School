@@ -80,6 +80,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="UT_Image.cs" />
     <Compile Include="UT_Admin.cs" />
     <Compile Include="UT_Cart.cs" />
     <Compile Include="UT_Menu.cs" />

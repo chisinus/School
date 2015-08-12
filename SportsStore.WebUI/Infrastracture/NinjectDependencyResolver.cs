@@ -3,6 +3,8 @@ using Ninject;
 using SportsStore.Domain.Abstract;
 using SportsStore.Domain.Concrete;
 using SportsStore.Domain.Entities;
+using SportsStore.WebUI.Infrastracture.Abstract;
+using SportsStore.WebUI.Infrastracture.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -45,6 +47,7 @@ namespace SportsStore.WebUI.Infrastracture
             };
 
             kernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>().WithConstructorArgument("settings", emailSettings);
+            kernel.Bind<IAuthProvider>().To<FormsAuthProvider>();
         }
 
         public object GetService(Type serviceType)
