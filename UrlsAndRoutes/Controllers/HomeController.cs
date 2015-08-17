@@ -16,5 +16,23 @@ namespace UrlsAndRoutes.Controllers
 
             return View("ActionName");
         }
+
+        //public ActionResult CustomVariable()
+        //{
+        //    ViewBag.Controller = "Home";
+        //    ViewBag.Action = "CustomVariable";
+        //    ViewBag.CustomVariable = RouteData.Values["id"];
+
+        //    return View();
+        //}
+
+        public ActionResult CustomVariable(string id)
+        {
+            ViewBag.Controller = "Home";
+            ViewBag.Action = "CustomVariable";
+            ViewBag.CustomVariable = id;
+
+            return View();
+        }
     }
 }
