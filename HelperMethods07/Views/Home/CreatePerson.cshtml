@@ -1,0 +1,72 @@
+﻿@model HelperMethods07.Models.Person
+
+@{
+    ViewBag.Title = "CreatePerson";
+    Layout = "/Views/Shared/_Layout.cshtml";
+    Html.EnableClientValidation(false);
+}
+
+<h2>CreatePerson</h2>
+
+<!--<form action="/Home/CreatePerson" method="post">-->
+@*@{ //Html.BeginForm(); }*@
+@*@using (Html.BeginForm("CreatePerson", "Home", new { id = "MyIdValue" }, FormMethod.Post, new { @class="personClass", data_formtype ="person" }))*@
+<p>full statement</p>
+@using (Html.BeginRouteForm("FormRoute", new { }, FormMethod.Post, new { @class = "personClass", data_formType = "person" }))
+{
+    <div class="dataElem">
+        <label>PersonId</label>
+        @Html.TextBox("persionId", @Model.PersonId)
+    </div>
+    <div class="dataElem">
+        <label>First Name</label>
+        @Html.TextBox("firstName", @Model.FirstName)
+    </div>
+    <div class="dataElem">
+        <label>Last Name</label>
+        @Html.TextBox("lastName", Model.LastName)
+    </div>
+    <input type="submit" value="Submit" />
+}
+
+<p>Use Property Name</p>
+@using (Html.BeginRouteForm("FormRoute", new { }, FormMethod.Post, new { @class = "personClass", data_formType = "person" }))
+{
+    <div class="dataElem">
+        <label>PersonId</label>
+        @Html.TextBox("PersonId")
+    </div>
+    <div class="dataElem">
+        <label>First Name</label>
+        @Html.TextBox("FirstName")
+    </div>
+    <div class="dataElem">
+        <label>Last Name</label>
+        @Html.TextBox("LastName")
+    </div>
+    <input type="submit" value="Submit" />
+}
+
+<p>STrongly typed</p>
+@using (Html.BeginRouteForm("FormRoute", new { }, FormMethod.Post, new { @class = "personClass", data_formType = "person" }))
+{
+    <div class="dataElem">
+        <label>PersonId</label>
+        @Html.TextBoxFor(m=>m.PersonId)
+    </div>
+    <div class="dataElem">
+        <label>First Name</label>
+        @Html.TextBoxFor(m=>m.FirstName)
+    </div>
+    <div class="dataElem">
+        <label>Last Name</label>
+        @Html.TextBoxFor(m=>m.LastName)
+    </div>
+    <div class="dataElem">
+        <label>Role</label>
+        @Html.DropDownListFor(m=>m.Role, new SelectList(Enum.GetNames(typeof(HelperMethods07.Models.Role))))
+    </div>
+    <input type="submit" value="Submit" />
+}
+<!--</form>-->
+@*@{ //Html.EndForm(); }*@

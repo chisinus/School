@@ -1,0 +1,53 @@
+﻿@model string
+@using HelperMethods07.Infrastructure
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        Here are the fruits:
+        @Html.ListItems((string[])ViewBag.Fruits)
+    </div>
+
+    <div>
+        Here are the cities:
+        @Html.ListItems((string[])ViewBag.Fruits)
+    </div>
+
+    <div>
+        <p>This is the content from the view (safe content):</p>
+        <div style="border: thin solid black; padding: 10px">
+            Here is the message:
+            <p>@Model</p>
+        </div>
+
+        <p>This is the content from the helper method with MvcHtmlString (tag is created):</p>
+        <div style="border: thin solid black; padding: 10px">
+            Here is the message:
+            @Html.DisplayMessage(Model);
+        </div>
+
+        <p>This is the content from the helper method with string (all tags are NOT created):</p>
+        <div style="border: thin solid black; padding: 10px">
+            Here is the message:
+            @Html.DisplayMessage2(Model);
+        </div>
+
+        <p>This is the content from the helper method with Encoded MvcHtmlString (input tag is NOT created):</p>
+        <div style="border: thin solid black; padding: 10px">
+            Here is the message:
+            @Html.DisplayMessage3(Model);
+        </div>
+
+    </div>
+</body>
+</html>
