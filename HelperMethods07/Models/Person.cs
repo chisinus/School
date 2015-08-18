@@ -1,11 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Web.Mvc;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
 namespace HelperMethods07.Models
 {
-    public class Person
+
+    [MetadataType(typeof(PersonMetaData))]
+    public partial class Person
     {
         public int PersonId { get; set; }
         public string FirstName { get; set; }
@@ -13,8 +15,10 @@ namespace HelperMethods07.Models
         public DateTime BirthDate { get; set; }
         public Address HomeAddress { get; set; }
         public bool IsApproved { get; set; }
+        [UIHint("Enum")]        // This attribute makes Enum.cshtml is called before Role.cshtml
         public Role Role { get; set; }
     }
+
     public class Address
     {
         public string Line1 { get; set; }
@@ -23,6 +27,7 @@ namespace HelperMethods07.Models
         public string PostalCode { get; set; }
         public string Country { get; set; }
     }
+
     public enum Role
     {
         Admin,

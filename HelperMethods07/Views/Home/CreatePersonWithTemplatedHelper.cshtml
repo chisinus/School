@@ -11,23 +11,23 @@
 @using (Html.BeginRouteForm("FormRoute", new { }, FormMethod.Post, new { @class = "personClass", data_formType = "person" }))
 {
     <div class="dataElem">
-        <label>PersonId</label>
-        @Html.Editor("PersonId")
+        @Html.EditorFor(m=>m.PersonId)
     </div>
     <div class="dataElem">
-        <label>First Name</label>
+        @Html.LabelFor(m=>m.FirstName)
         @Html.Editor("FirstName")
     </div>
     <div class="dataElem">
-        <label>Last Name</label>
+        @Html.LabelFor(m => m.LastName)
         @Html.EditorFor(m => m.LastName)
     </div>
     <div class="dataElem">
-        <label>Role</label>
-        @Html.EditorFor(m => m.Role, new SelectList(Enum.GetNames(typeof(HelperMethods07.Models.Role))))
+        @Html.LabelFor(m => m.Role)
+        @*@Html.EditorFor(m => m.Role, new SelectList(Enum.GetNames(typeof(HelperMethods07.Models.Role))))*@
+        @Html.EditorFor(m=>m.Role)
     </div>
     <div class="dataElem">
-        <label>Birth Date</label>
+        @Html.LabelFor(m => m.BirthDate)
         @Html.EditorFor(m => m.BirthDate)
     </div>
     <input type="submit" value="Submit" />

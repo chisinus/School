@@ -58,5 +58,15 @@ namespace HelperMethods07.Controllers
             return View("DisplayPerson", person);
         }
 
+        public ActionResult CreatePersonWithModelHelper()
+        {
+            return View(new Person());
+        }
+
+        [HttpPost]
+        public ActionResult CreatePersonWithModelHelper(Person person)
+        {
+            return View("DisplayPerson", person);
+        }
     }
 }
