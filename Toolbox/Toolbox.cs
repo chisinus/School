@@ -24,7 +24,7 @@ namespace Toolbox
             {
                 connection.Open();
             }
-            catch (SqlException sqle)
+            catch (SqlException)
             {
                 connection = null;
             }

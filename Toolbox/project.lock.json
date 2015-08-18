@@ -3,6 +3,7 @@
   "version": -9996,
   "targets": {
     "DNX,Version=v4.5.1": {
+      "jQuery/2.1.4": {},
       "System.Data.Common/4.0.0-beta-22816": {
         "dependencies": {
           "System.IO": "4.0.10-beta-22816",
@@ -134,6 +135,7 @@
       }
     },
     "DNXCore,Version=v5.0": {
+      "jQuery/2.1.4": {},
       "Microsoft.CSharp/4.0.0-beta-22816": {
         "dependencies": {
           "System.Dynamic.Runtime": "4.0.10-beta-22816",
@@ -343,6 +345,22 @@
     }
   },
   "libraries": {
+    "jQuery/2.1.4": {
+      "sha512": "X8mRMt2HNI6kxYMWyQEcOumpAzEAs95DWSjM6FlX3DEVM5afuj8Abj0Y6i6H9wK7I7n3bJ0fnDA80OfKV19HQA==",
+      "files": [
+        "jQuery.2.1.4.nupkg",
+        "jQuery.2.1.4.nupkg.sha512",
+        "jQuery.nuspec",
+        "Content/Scripts/jquery-2.1.4-vsdoc.js",
+        "Content/Scripts/jquery-2.1.4.js",
+        "Content/Scripts/jquery-2.1.4.min.js",
+        "Content/Scripts/jquery-2.1.4.min.map",
+        "Tools/common.ps1",
+        "Tools/install.ps1",
+        "Tools/jquery-2.1.4.intellisense.js",
+        "Tools/uninstall.ps1"
+      ]
+    },
     "Microsoft.CSharp/4.0.0-beta-22816": {
       "sha512": "h+75iL9JfUbT0P8xOm9u0XSvk5+8GUD92VVwjbvJHqIcM23DVv2AjYVhVjTm6y923lNLn+qh/h4ViinL9RME2Q==",
       "files": [
@@ -569,7 +587,8 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "System.Data.SqlClient >= 4.0.0-beta-22816"
+      "System.Data.SqlClient >= 4.0.0-beta-22816",
+      "jQuery >= 2.1.4"
     ],
     "DNX,Version=v4.5.1": [],
     "DNXCore,Version=v5.0": [
