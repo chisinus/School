@@ -113,11 +113,16 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MvcModelController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\AddressSummaryBinder.cs" />
+    <Compile Include="Infrastructure\CountryValueProvider.cs" />
     <Compile Include="Infrastructure\CustomHelper.cs" />
+    <Compile Include="Infrastructure\CustomValueProviderFactory.cs" />
+    <Compile Include="Models\AddressSummary.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Metadata\PersonMetaData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -143,6 +148,12 @@
     <Content Include="Views\People\GetPeople.cshtml" />
     <Content Include="Views\People\GetPeopleData.cshtml" />
     <Content Include="Views\People\GetPeople_Ajax.cshtml" />
+    <Content Include="Views\MvcModel\Index.cshtml" />
+    <Content Include="Views\Shared\_MvcModelLayout.cshtml" />
+    <Content Include="Views\MvcModel\CreatePerson.cshtml" />
+    <Content Include="Views\MvcModel\DisplaySummary.cshtml" />
+    <Content Include="Views\MvcModel\Names.cshtml" />
+    <Content Include="Views\MvcModel\Addresses.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

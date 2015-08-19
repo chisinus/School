@@ -12,7 +12,7 @@ namespace HelperMethods07.Models
     public class PersonMetaData
     {
         //[ScaffoldColumn(false)]   completely exclude this property
-        [HiddenInput(DisplayValue = false)]
+        //[HiddenInput(DisplayValue = false)]
         public int PersonId { get; set; }
         [Display(Name = "First")]
         //[UIHint("MultilineText")]
