@@ -19,14 +19,20 @@ namespace WebServices.Controllers
         {
             return repo.Get(id);
         }
+
+        [HttpPost]
         public Reservation PostReservation(Reservation item)
         {
             return repo.Add(item);
         }
+
+        [HttpPut]
         public bool PutReservation(Reservation item)
         {
             return repo.Update(item);
         }
+
+        [HttpDelete]
         public void DeleteReservation(int id)
         {
             repo.Remove(id);
