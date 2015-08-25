@@ -40,6 +40,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperMethods07", "HelperMe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperMethods07.Tests", "HelperMethods07.Tests\HelperMethods07.Tests.csproj", "{F4A0446B-2DD0-4A01-A30C-B451320E7EA9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebServices08", "WebServices\WebServices08.csproj", "{5437448F-3F02-43E3-B9FF-07AA1379F35F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebServices.Tests", "WebServices.Tests\WebServices.Tests.csproj", "{BABC8C0F-B00C-4F71-BD42-3FAC7D9AD3BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -114,6 +118,14 @@ Global
 		{F4A0446B-2DD0-4A01-A30C-B451320E7EA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4A0446B-2DD0-4A01-A30C-B451320E7EA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4A0446B-2DD0-4A01-A30C-B451320E7EA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5437448F-3F02-43E3-B9FF-07AA1379F35F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5437448F-3F02-43E3-B9FF-07AA1379F35F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5437448F-3F02-43E3-B9FF-07AA1379F35F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5437448F-3F02-43E3-B9FF-07AA1379F35F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BABC8C0F-B00C-4F71-BD42-3FAC7D9AD3BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BABC8C0F-B00C-4F71-BD42-3FAC7D9AD3BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BABC8C0F-B00C-4F71-BD42-3FAC7D9AD3BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BABC8C0F-B00C-4F71-BD42-3FAC7D9AD3BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,14 +1,24 @@
-﻿@model bool?
+﻿@*For Appointment Controller*@
 
-@if (ViewData.ModelMetadata.IsNullableValueType && Model == null)
+@model bool?
+
+@if (ViewData.ModelMetadata.IsNullableValueType)
 {
-    @:(True) (False) <b>(Not Set)</b>
-}
-else if (Model.Value)
-{
-    @:<b>(True)</b> (False) (Not Set)
+    @Html.DropDownListFor(m => m, new SelectList(new[] { "Not Set", "True", "False" }, Model))
 }
 else
 {
-    @:(True) <b>(False)</b> (Not Set)
+    ModelState state = ViewData.ModelState[ViewData.ModelMetadata.PropertyName];
+    bool value = Model ?? false;
+
+    if (state != null && state.Errors.Count > 0)
+    {
+        <span class="input-validation-error" style="padding: 0; margin: 1px">
+            @Html.CheckBox("", value)
+        </span>
+    }
+    else
+    {
+        @Html.CheckBox("", value)
+    }
 }
