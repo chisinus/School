@@ -114,11 +114,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AppointmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MvcModelController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\AddressSummaryBinder.cs" />
+    <Compile Include="Infrastructure\CountryValueProvider.cs" />
     <Compile Include="Infrastructure\CustomHelper.cs" />
+    <Compile Include="Infrastructure\CustomValueProviderFactory.cs" />
+    <Compile Include="Models\AddressSummary.cs" />
     <Compile Include="Infrastructure\FutureDateAttribute.cs" />
     <Compile Include="Infrastructure\MustBeTrueAttribute.cs" />
     <Compile Include="Models\Appointment.cs" />
@@ -147,10 +152,6 @@
     <Content Include="Views\People\GetPeople.cshtml" />
     <Content Include="Views\People\GetPeopleData.cshtml" />
     <Content Include="Views\People\GetPeople_Ajax.cshtml" />
-    <Content Include="Views\Shared\_Layout_Appointment.cshtml" />
-    <Content Include="Views\Appointment\MakeBooking.cshtml" />
-    <Content Include="Views\Appointment\Completed.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Boolean.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

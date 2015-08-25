@@ -13,22 +13,37 @@ namespace HelperMethods07
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                name: "",
-                url: "{controller}/{action}/{selectedRole}",
-                defaults: new { controller = "Home", action = "Index", selectedRole = "All" }
-            );
+            #region HelperMethod
+            //routes.MapRoute(
+            //    name: "",
+            //    url: "{controller}/{action}/{selectedRole}",
+            //    defaults: new { controller = "Home", action = "Index", selectedRole = "All" }
+            //);
 
+            //routes.MapRoute(
+            //    name: "Default",
+            //    url: "{controller}/{action}/{id}",
+            //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            //);
+
+            //routes.MapRoute(
+            //    name : "FormRoute",
+            //    url : "app/forms/{controller}/{action}"
+            //);
+            #endregion HelperMethod
+
+            #region MvcModel
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new
+                {
+                    controller = "MvcModel",
+                    action = "Index",
+                    id = UrlParameter.Optional
+                }
             );
-
-            routes.MapRoute(
-                name : "FormRoute",
-                url : "app/forms/{controller}/{action}"
-            );
+            #endregion MvcModel
         }
     }
 }
